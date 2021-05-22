@@ -1,0 +1,14 @@
+#! /bin/bash
+
+if [ ! -f "${HOME}/.todoist_api.key" ]
+then
+    echo "No $HOME/.todoist_api.key present"
+    exit 1
+fi
+
+curl "https://api.todoist.com/rest/v1/tasks" \
+    -X POST \
+    --data "{\"content\": \"$*\", \"priority\": 1}" \
+    -H "Content-Type: application/json" \
+    -H "X-Request-Id: $(uuidgen)" \
+    -H "Authorization: Bearer $(cat "${HOME}/.todoist_api.key")"
