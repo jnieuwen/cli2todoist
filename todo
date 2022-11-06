@@ -6,7 +6,7 @@ then
     exit 1
 fi
 
-curl "https://api.todoist.com/rest/v1/tasks" \
+curl "https://api.todoist.com/rest/v2/tasks" \
     -X POST \
     --data "{\"content\": \"$*\", \"priority\": 1}" \
     -H "Content-Type: application/json" \
